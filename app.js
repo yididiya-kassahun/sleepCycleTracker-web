@@ -7,13 +7,14 @@ const MysqlStore = require("express-mysql-session")(session);
 const sequelize = require("./utils/database");
 
 // -----| models
-// const adminModel = require("./models/admin");
-// const addPolicy = require("./models/addPolicy");
+const adminModel = require("./models/admin");
+const userModel = require("./models/user");
 
 // -----| Routes
 const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
 const homeRoute = require("./routes/home");
+const authRoute = require("./routes/auth");
 
 const app = express();
 const store = new MysqlStore({
@@ -36,15 +37,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(adminRoute);
 app.use(userRoute);
 app.use(homeRoute);
+app.use(authRoute);
 
 // Using sequelizer for ORM database - mysql
-//sequelize
+sequelize
   //.sync({ force: true }) //override the existing table
-  //.sync()
- // .then((result) => {
+  .sync()
+  .then((result) => {
     app.listen(3000);
- // })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
+  })
+  .catch((err) => {
+    console.log(err);
+  });
