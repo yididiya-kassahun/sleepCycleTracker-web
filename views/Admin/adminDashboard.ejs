@@ -2,7 +2,7 @@
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-<%-include('includes/sidebar.ejs') %>
+    <%-include('includes/sidebar.ejs') %>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -86,7 +86,6 @@
             class="d-sm-flex align-items-center justify-content-between mb-4"
           >
             <h1 class="h3 mb-0 text-gray-800">List of Registered Users</h1>
-        
           </div>
 
           <div class="row">
@@ -103,9 +102,7 @@
                     justify-content-between
                   "
                 >
-                  <h6 class="m-0 font-weight-bold text-primary">
-                  Users
-                  </h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Users</h6>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">
@@ -118,15 +115,17 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <% if(users.length > 0) { %> <% for(let user of users ) {
+                      %>
                       <tr>
-                        <td>1</td>
-                        <td>Udin Wayang</td>
-                        <td>Nasi@gmail.com</td>
+                        <td><%= user.id %></td>
+                        <td><%= user.Name %></td>
+                        <td><%= user.Email %></td>
                         <td>
                           <a href="#" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                       </tr>
-                     
+                      <% } %><% } %>
                     </tbody>
                   </table>
                 </div>

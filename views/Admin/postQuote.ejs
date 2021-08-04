@@ -55,14 +55,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+
                 <div class="dropdown-divider"></div>
                 <a
                   class="dropdown-item"
@@ -106,9 +99,26 @@
                   </h6>
                 </div>
                 <div class="card-body">
-                  <textarea name="quotes" cols="120" rows="7"></textarea>
+                  <form action="/postQuote" method="POST">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control col-md-9"
+                        name="author"
+                        placeholder="Enter Author"
+                      />
+                    </div>
+                      <br />
+                      <div class="form-group">
+                      <textarea name="quote" cols="120" rows="7"></textarea>
+                      </div>
+                      <button class="btn btn-primary" type="submit">
+                        Post
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <div class="card-footer"></div>
+              
               </div>
             </div>
             <hr />
@@ -117,12 +127,18 @@
                 <div class="card-header">
                   <h4 style="color: blue">List of Posted Quotes</h4>
                 </div>
-                <div class="card-body"></div>
+                <div class="card-body">
+                      <% if(quotes.length > 0) { %> <% for(let quote of
+                      quotes ) { %>
+                        <h4><%= quote.quote %></h4>
+                        <h5 style="color: black;"> -<%= quote.author %></h5>
+                        <hr>
+                        <% } %> <% } %>
+                </div>
               </div>
             </div>
           </div>
           <!--Row-->
-
           <!-- Modal Logout -->
           <div
             class="modal fade"
@@ -163,10 +179,10 @@
               </div>
             </div>
           </div>
+          <%-include('includes/footer.ejs') %>
         </div>
         <!---Container Fluid-->
       </div>
-      <%-include('includes/footer.ejs') %>
     </div>
   </div>
 </body>

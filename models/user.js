@@ -23,6 +23,11 @@ const User = sequelize.define("user", {
     allowNull: false,
     required: true,
   },
+  role: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    required: true,
+  },
 });
 
 module.exports = User;

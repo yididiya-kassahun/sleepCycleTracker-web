@@ -1,33 +1,28 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../utils/database");
 
-const Admin = sequelize.define("admin", {
+const Quotes = sequelize.define("quote", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-  Name: {
+  quote: {
     type: Sequelize.STRING,
     allowNull: false,
     required: true,
   },
-  Email: {
+  author: {
     type: Sequelize.STRING,
     allowNull: false,
     required: true,
   },
-  Password: {
+  adminID: {
     type: Sequelize.STRING,
-    allowNull: false,
-    required: true,
-  },
-  role: {
-    type: Sequelize.INTEGER,
     allowNull: false,
     required: true,
   },
 });
 
-module.exports = Admin;
+module.exports = Quotes;

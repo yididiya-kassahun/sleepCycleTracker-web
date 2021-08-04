@@ -9,6 +9,8 @@ const sequelize = require("./utils/database");
 // -----| models
 const adminModel = require("./models/admin");
 const userModel = require("./models/user");
+const quoteModel = require("./models/quotes");
+const roleModel = require("./models/roles");
 
 // -----| Routes
 const adminRoute = require("./routes/admin");
