@@ -17,6 +17,7 @@ const Admin = sequelize.define("admin", {
     type: Sequelize.STRING,
     allowNull: false,
     required: true,
+    unique: true,
   },
   Password: {
     type: Sequelize.STRING,
