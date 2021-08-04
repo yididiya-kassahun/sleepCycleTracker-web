@@ -1,0 +1,124 @@
+<%-include('includes/head.ejs') %>
+
+<body id="page-top">
+  <div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+          <ul><h3 style="color: white;float: right;"> Sleep Cycle Tracker</h3></ul>
+          <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+            </li>
+   -->
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small">Yididiya</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <h3> Track Your Sleeping Habit Using this system</h3>
+           <hr>
+          <div class="row">
+            <div class="d-sm-flex align-items-center justify-content-between col"> 
+              <div>
+            <h3 style="color: blue;margin-left: 200px;">Motivational Quotes</h3>
+            <h5 style="color: black;">"Home Dashboard Screen: When a user is not logged in, show the homepage with an 
+              introduction of the app and how it can help users track their sleep better with."</h5>
+              </div> 
+          </div>
+
+          <div class="text-center col">
+            <img src="img/sleep_img.jpg" style="max-height: 470px;width: 500px;">
+            <h4 class="pt-3">Tracker<b>Your Sleep Cycle</b> here!</h4>
+          </div>
+        </div>
+         <h3>Here are Tips</h3>
+        <div style="margin-left: 500px; margin-top: 160px;" class="row">
+        <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="img/sleep_pattern.jpg" alt="Card image cap">
+  <div class="card-body">
+         <h4 style="font-weight: bold;">Problem of Irregural sleep pattern</h4>
+     <p>A new study finds that irregular sleeping patterns, including catch-up sleep, can negatively affect the body's metabolism, which controls how we function and use energy.
+  It also puts us at a higher risk for chronic diseases like diabetes. allowed only five hours of sleep nightly.</p>
+  </div>
+</div>
+
+ <div class="card" style="width: 18rem; margin-left: 50px;">
+  <img class="card-img-top" src="img/sleep_pattern.jpg" alt="Card image cap">
+  <div class="card-body">
+         <h4 style="font-weight: bold;">Problem of Irregural sleep pattern</h4>
+     <p>A new study finds that irregular sleeping patterns, including catch-up sleep, can negatively affect the body's metabolism, which controls how we function and use energy.
+  It also puts us at a higher risk for chronic diseases like diabetes. allowed only five hours of sleep nightly.</p>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!---Container Fluid-->
+      </div>
+     <!-- Footer -->
+     <%-include('includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
