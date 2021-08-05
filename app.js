@@ -7,7 +7,6 @@ const MysqlStore = require("express-mysql-session")(session);
 const sequelize = require("./utils/database");
 
 // -----| models
-const adminModel = require("./models/admin");
 const userModel = require("./models/user");
 const quoteModel = require("./models/quotes");
 const roleModel = require("./models/roles");
@@ -34,6 +33,15 @@ app.set("views", "views");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(
+  session({
+    secret: "my secret",
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+  })
+);
 
 // Set Routing
 app.use(adminRoute);

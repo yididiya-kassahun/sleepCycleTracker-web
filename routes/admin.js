@@ -1,11 +1,13 @@
 const express = require("express");
 
 const adminController = require("../controllers/adminController");
+const isAuth = require("../middleware/isAuth");
 
 const router = express.Router();
 
-router.get("/admin", adminController.adminDashboard);
-router.get("/quotesPage", adminController.quotesPage);
-router.post("/postQuote", adminController.postQuotes);
+router.get("/admin", isAuth, adminController.adminDashboard);
+router.get("/quotesPage", isAuth, adminController.quotesPage);
+router.post("/postQuote", isAuth, adminController.postQuotes);
+router.post("/deleteUser/:userID", adminController.deleteUser);
 
 module.exports = router;

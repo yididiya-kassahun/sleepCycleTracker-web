@@ -61,37 +61,42 @@ exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  role
-    .findOne({ roleName: "user" })
-    .then((roleID) => {
-      console.log("here ======" + roleID);
-    })
-    .catch((err) => {});
-
-  //console.log("here ======" + adminRoleID);
-
-  User.findOne({ Email: email })
+  User.findOne({ where: { Email: email } })
     .then((user) => {
       if (!user) {
-        return res.redirect("/login");
-      }
-      //  .then((roleID) => {
+        res.redirect("/login");
+      } 
       bcrypt
         .compare(password, user.Password)
         .then((doMatch) => {
-          // console.log("here is role id =================");
-          // if (doMatch && user.role == role.id) {
-          //   return res.redirect("/user");
-          // }
+          if (doMatch) {
+            role
+              .findAll()
+              .then((userRole) => {
+                if (userRole[0].id == user.role) {
+                  req.session.isLoggedIn = true;
+                  req.session.user = user;
+                  req.session.save();
+                  res.redirect("/admin");
+               // console.log("User loggedin " + userRole[1].roleName);                   
+                } else if (userRole[1].id == user.role) {
+                  req.session.isLoggedIn = true;
+                  req.session.user = user;
+                  req.session.save();                     
+                  res.redirect("/user");              
+                } else {                       
+                  res.redirect("/login");                    
+                }                       
+              })
+              .catch((err) => {});
+          } else {
+            res.redirect("/login");
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     })
-    // .catch((err) => {
-    //   console.log(err);
-    //   res.redirect("/");
-    // });
     .catch((err) => {
       console.log(err);
     });

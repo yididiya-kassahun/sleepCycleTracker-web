@@ -47,3 +47,19 @@ exports.postQuotes = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.deleteUser = (req, res, next) => {
+  const deleteUser = req.params.userID;
+  users
+    .findByPk(deleteUser)
+    .then((User) => {
+      User.destroy();
+    })
+    .then((result) => {
+      console.log("User Deleted Successfully!");
+      res.redirect("/admin");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
