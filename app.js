@@ -10,6 +10,7 @@ const sequelize = require("./utils/database");
 const userModel = require("./models/user");
 const quoteModel = require("./models/quotes");
 const roleModel = require("./models/roles");
+const sleepEntry = require("./models/sleepEntry");
 
 // -----| Routes
 const adminRoute = require("./routes/admin");
@@ -51,7 +52,7 @@ app.use(authRoute);
 
 // Using sequelizer for ORM database - mysql
 sequelize
-  //.sync({ force: true }) //override the existing table
+   //.sync({ force: true }) //override the existing table
   .sync()
   .then((result) => {
     app.listen(3000);

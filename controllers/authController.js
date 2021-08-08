@@ -24,9 +24,9 @@ exports.postRegister = (req, res, next) => {
   const confPassword = req.body.confrimPassword;
 
   role
-    .findAll({ where: { roleName: "user" } })
+    .findOne({ where: { roleName: "user" } })
     .then((role) => {
-      User.findOne({ Email: email })
+      User.findOne({ where: { Email: email } })
         .then((userEmail) => {
           if (userEmail) {
             console.log(userEmail);
@@ -38,7 +38,7 @@ exports.postRegister = (req, res, next) => {
               Name: fullName,
               Email: email,
               Password: hashedPassword,
-              role: role[0].id,
+              role: role.id,
             });
             return user.save();
           });
@@ -65,7 +65,7 @@ exports.postLogin = (req, res, next) => {
     .then((user) => {
       if (!user) {
         res.redirect("/login");
-      } 
+      }
       bcrypt
         .compare(password, user.Password)
         .then((doMatch) => {
@@ -78,15 +78,15 @@ exports.postLogin = (req, res, next) => {
                   req.session.user = user;
                   req.session.save();
                   res.redirect("/admin");
-               // console.log("User loggedin " + userRole[1].roleName);                   
+                  // console.log("User loggedin " + userRole[1].roleName);
                 } else if (userRole[1].id == user.role) {
                   req.session.isLoggedIn = true;
                   req.session.user = user;
-                  req.session.save();                     
-                  res.redirect("/user");              
-                } else {                       
-                  res.redirect("/login");                    
-                }                       
+                  req.session.save();
+                  res.redirect("/user");
+                } else {
+                  res.redirect("/login");
+                }
               })
               .catch((err) => {});
           } else {
@@ -100,4 +100,12 @@ exports.postLogin = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+exports.Logout = (req, res, next) => {
+  req.session.isLoggedIn = false;
+  req.session.user = 0;
+  req.session.save();
+
+  return res.redirect("/login");
 };

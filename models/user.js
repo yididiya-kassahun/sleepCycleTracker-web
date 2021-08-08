@@ -43,7 +43,7 @@ const User = sequelize.define("user", {
 //         role: 1,
 //       });
 //     })
-//     .catch((err) => {});
-// });
+    // .catch((err) => {});
+//});
 
 module.exports = User;

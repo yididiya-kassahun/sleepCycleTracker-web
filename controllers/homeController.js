@@ -12,16 +12,13 @@ exports.homeView = (req, res, next) => {
           quote: quotes[0],
           path: "homePage",
         });
+      } else {
+        res.render("home/home", {
+          pageTitle: "Home Page",
+          quote: {quote:"A new study finds that irregular sleeping patterns including catch-up sleep",author: "Evan Peter",},
+          path: "homePage",
+        });
       }
-      res.render("home/home", {
-        pageTitle: "Home Page",
-        quote: {
-          quote:
-            "A new study finds that irregular sleeping patterns including catch-up sleep",
-          author: "Evan Peter",
-        },
-        path: "homePage",
-      });
     })
     .catch((err) => {});
 };

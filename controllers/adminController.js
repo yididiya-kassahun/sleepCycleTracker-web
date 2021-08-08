@@ -9,6 +9,7 @@ exports.adminDashboard = (req, res, next) => {
         pageTitle: "Admin Dashboard",
         users: users,
         path: "path",
+        userName: req.session.user.Name,
       });
     })
     .catch({});
@@ -37,7 +38,7 @@ exports.postQuotes = (req, res, next) => {
     .create({
       quote: quote,
       author: author,
-      adminID: 1,
+      adminID: req.session.user.id,
     })
     .then((result) => {
       console.log(result);
