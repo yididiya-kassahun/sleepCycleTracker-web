@@ -141,7 +141,7 @@
                         <td><%= sleepEntry.sleepDuration %> Hours</td>
                         <td>
                           <button class="btn btn-info">Edit</button>|
-                          <a href="" class="btn btn-danger">Delete</a>
+                          <a href="/deleteSleepEntry/<%= sleepEntry.id %>" class="btn btn-danger">Delete</a>
                         </td>
                       </tr>
                       <% } %><% } %>
@@ -154,7 +154,7 @@
               <div class="col-md-9">
               <div class="card mb-3">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Sleep Chart</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Sleep duration Chart</h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-area">

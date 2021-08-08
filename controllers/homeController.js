@@ -15,7 +15,11 @@ exports.homeView = (req, res, next) => {
       } else {
         res.render("home/home", {
           pageTitle: "Home Page",
-          quote: {quote:"A new study finds that irregular sleeping patterns including catch-up sleep",author: "Evan Peter",},
+          quote: {
+            quote:
+              "Happiness is waking up, looking at the clock and finding that you still have two hours left to sleep",
+              author: "Evan Peter",
+          },
           path: "homePage",
         });
       }

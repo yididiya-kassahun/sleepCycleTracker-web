@@ -23,9 +23,9 @@ exports.chartData = (req, res, next) => {
   sleepEntry
     .findAll()
     .then((sleepEntry) => {
-        res.json({
-         data:sleepEntry
-        });
+      res.json({
+        data: sleepEntry,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -48,6 +48,23 @@ exports.addSleepEntry = (req, res, next) => {
     })
     .then((result) => {
       console.log("Sleep entry added successfully");
+      res.redirect("/user");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.deleteSleepEntry = (req, res, next) => {
+  const sleepEntryID = req.params.deleteID;
+
+  sleepEntry
+    .findByPk(sleepEntryID)
+    .then((entryResult) => {
+      entryResult.destroy();
+    })
+    .then((result) => {
+      console.log("Sleep Entry Deleted Successfully!");
       res.redirect("/user");
     })
     .catch((err) => {
