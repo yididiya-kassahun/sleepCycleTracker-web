@@ -92,7 +92,6 @@
           </div>
 
           <div class="row">
-
             <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
@@ -134,14 +133,23 @@
                       of sleepEntries ) { %>
                       <tr>
                         <td><%= sleepEntry.id %></td>
-                        <td><%= moment(sleepEntry.sleepTime).format('DD/MM/YYYY HH:MM:SS') %></td>
                         <td>
-                          <%= moment(sleepEntry.wakeUpTime).format('DD/MM/YYYY HH:MM:SS') %>
+                          <%= moment(sleepEntry.sleepTime).format('DD/MM/YYYY
+                          HH:MM:SS') %>
+                        </td>
+                        <td>
+                          <%= moment(sleepEntry.wakeUpTime).format('DD/MM/YYYY
+                          HH:MM:SS') %>
                         </td>
                         <td><%= sleepEntry.sleepDuration %> Hours</td>
                         <td>
                           <button class="btn btn-info">Edit</button>|
-                          <a href="/deleteSleepEntry/<%= sleepEntry.id %>" class="btn btn-danger">Delete</a>
+                          <form
+                            action="/deleteSleepEntry/<%= sleepEntry.id %>"
+                            method="POST"
+                          >
+                            <a class="btn btn-danger">Delete</a>
+                          </form>
                         </td>
                       </tr>
                       <% } %><% } %>
@@ -151,17 +159,28 @@
                 <div class="card-footer"></div>
               </div>
             </div>
-              <div class="col-md-9">
+            <div class="col-md-9">
               <div class="card mb-3">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Sleep duration Chart</h6>
+                <div
+                  class="
+                    card-header
+                    py-3
+                    d-flex
+                    flex-row
+                    align-items-center
+                    justify-content-between
+                  "
+                >
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Sleep duration Chart
+                  </h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
                   </div>
-                  <hr>
-                 Sleep Durations of the last days
+                  <hr />
+                  Sleep Durations of the last days
                 </div>
               </div>
             </div>
@@ -239,8 +258,5 @@
       <%- include('includes/footer.ejs') %>
     </div>
   </div>
-  <script>
-  
-
-  </script>
+  <script></script>
 </body>

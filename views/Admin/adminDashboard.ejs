@@ -108,11 +108,9 @@
                         <td><%= user.Name %></td>
                         <td><%= user.Email %></td>
                         <td>
-                          <a
-                            href="/deleteUser/<%= user.id %>"
-                            class="btn btn-sm btn-danger"
-                            >Delete</a
-                          >
+                  <form action="/deleteUser/<%= user.id %>" method="POST">
+                          <a class="btn btn-sm btn-danger">Delete</a>
+                  </form>
                         </td>
                       </tr>
                       <% } %><% } %>
